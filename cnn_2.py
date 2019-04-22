@@ -12,7 +12,7 @@ from tflearn.layers.estimator import regression
 
 
 IMG_SIZE= 50
-LR= 1e-3
+LR= 1e-3 #0.001
 
 
 dataset="E:/Data set for pattern/tr"
@@ -58,15 +58,10 @@ def create_test_data(test_data,testset,cat,IMG_SIZE):
     np.save('test_data.npy', test_data)
 
 
-def formalize(X,y,data):
-    for features , labels in data:
-        X.append(features)
-        y.append(labels)
+
 #Data set and Test set Loading        
 create_training_data(training_data,dataset,categories,IMG_SIZE)
 create_test_data(test_data,testset,categories,IMG_SIZE)
-#formalize(X_train,y_train,training_data)
-#formalize(X_test,y_test,test_data)
 X_train=np.array([i[0] for i in training_data]).reshape(-1,IMG_SIZE,IMG_SIZE,1)
 y_train=[i[1]for i in training_data]
 X_test=np.array([i[0] for i in test_data]).reshape(-1,IMG_SIZE,IMG_SIZE,1)
